@@ -1,0 +1,98 @@
+﻿<Window x:Class="FloatingLabelComboBoxDEBUGGING.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customControls="clr-namespace:CustomControls"
+        xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:floatinglabelcombobox="clr-namespace:FloatingLabelComboBox" d:DataContext="{d:DesignInstance Type=floatinglabelcombobox:MainViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF06013F" Offset="1"/>
+                <GradientStop Color="#FF040F2E"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel Margin="40">
+            <GroupBox Header="Custom ComboBox  -- (This One does'nt raise SelectedItem Change Notification)">
+                <customControls:FloatingLabelComboBox
+                        HorizontalAlignment="Left"
+                        Width="160"
+                        FontSize="20"
+                        ComboBoxForeground="AliceBlue"
+                        LabelText="Student Name"
+                        LabelForeground="LimeGreen"
+                        LabelFontSize="13"
+                        materialdesign:HintAssist.Hint="Student Name"
+                        ComboBoxItemsSource="{Binding Students}"
+                        ComboBoxSelectedValue="{Binding SelectedStudent.StudentName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        ComboBoxSelectedValuePath="StudentName"
+                        ComboBoxDisplayMemberPath="StudentName"
+                        ComboBoxSelectedItem="{Binding SelectedStudent}"
+                />
+            </GroupBox>
+
+            <GroupBox Header="Normal WPF ComboBox  -- (This One raises SelectedItem Change Notification)">
+                <ComboBox
+                        HorizontalAlignment="Left"
+                        Width="160"
+                        FontSize="20"
+                        Foreground="AliceBlue"
+                        ItemsSource="{Binding Students}"
+                        SelectedValue="{Binding SelectedStudent.StudentName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        SelectedValuePath="StudentName"
+                        DisplayMemberPath="StudentName"
+                        SelectedItem="{Binding SelectedStudent}"
+                />
+            </GroupBox>
+            
+            <!--<customControls:FloatingLabelComboBox
+                        HorizontalAlignment="Left"
+                        Width="160"
+                        FontSize="20"
+                        ComboBoxForeground="AliceBlue"
+                        LabelText="Country of Birth"
+                        LabelForeground="LimeGreen"
+                        LabelFontSize="13"
+                        materialdesign:HintAssist.Hint="Country of Birth"
+                        ComboBoxItemsSource="{Binding Countries}"
+                        ComboBoxSelectedValue="{Binding SelectedStudent.CountryofBirth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        ComboBoxSelectedValuePath="CountryName"
+                        ComboBoxDisplayMemberPath="CountryName"
+                        ComboBoxSelectedItem="{Binding SelectedCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                />
+            <customControls:FloatingLabelComboBox
+                        HorizontalAlignment="Left"
+                        Width="160"
+                        FontSize="20"
+                        ComboBoxForeground="AliceBlue"
+                        LabelText="Province of Birth"
+                        LabelForeground="LimeGreen"
+                        LabelFontSize="13"
+                        materialdesign:HintAssist.Hint="Province of Birth"
+                        ComboBoxItemsSource="{Binding Provinces}"
+                        ComboBoxSelectedValue="{Binding SelectedStudent.ProvinceofBirth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        ComboBoxSelectedValuePath="ProvinceID"
+                        ComboBoxDisplayMemberPath="ProvinceName"
+                        ComboBoxSelectedItem="{Binding SelectedProvince, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                />
+            <customControls:FloatingLabelComboBox
+                        HorizontalAlignment="Left"
+                        Width="160"
+                        FontSize="20"
+                        ComboBoxForeground="AliceBlue"
+                        LabelText="District of Birth"
+                        LabelForeground="LimeGreen"
+                        LabelFontSize="13"
+                        materialdesign:HintAssist.Hint="District of Birth"
+                        ComboBoxItemsSource="{Binding Districts}"
+                        ComboBoxSelectedValue="{Binding SelectedStudent.DistrictofBirth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        ComboBoxSelectedValuePath="DistrictID"
+                        ComboBoxDisplayMemberPath="DistrictName"
+                        ComboBoxSelectedItem="{Binding SelectedDistrict, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                />-->
+
+        </StackPanel>
+    </Grid>
+</Window>
